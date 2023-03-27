@@ -31,7 +31,7 @@ bool RK4Solver::print_times() const {
 	if (m_integrated == false) { return false; }
 
 	// Create the File Location String
-	std::string fileloc = "Outputs/RK4Times.csv";
+	std::string fileloc = "../Outputs/RK4Times.csv";
 
 	// Create and open a text file to write into
 	std::ofstream Opfile(fileloc);
@@ -54,7 +54,7 @@ bool RK4Solver::print_solutions() const {
 	if (m_integrated == false) { return false; }
 
 	// Create the File Location String
-	std::string fileloc = "Outputs/RK4Vectors.csv";
+	std::string fileloc = "../Outputs/RK4Vectors.csv";
 
 	// Create and open a text file to write into
 	std::ofstream Opfile(fileloc);
