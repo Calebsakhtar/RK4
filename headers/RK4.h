@@ -2,7 +2,7 @@
 #define RK4_H
 
 #include <vector>
-#include "../../Eigen/Dense"
+#include "../eigen/Eigen/Dense"
 
 typedef Eigen::VectorXd (*vector_function)(Eigen::VectorXd, double);
 
