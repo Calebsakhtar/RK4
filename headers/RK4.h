@@ -20,8 +20,9 @@ class RK4Solver {
 	Eigen::VectorXd m_k3;
 	Eigen::VectorXd m_k4;
 
-	// Store the time vector
-	std::vector<double> m_ts;
+	// Initialise the lists
+	std::vector<double> m_ts; // Times to evaluate the integration at
+	std::vector<Eigen::VectorXd> m_solutions; // Integration results at times m_ts
 
 public:
 	// Default Empty Constructor
@@ -41,8 +42,12 @@ public:
 		m_k4 = Eigen::VectorXd::Zero(m_vecsize);
 	}
 
-	// Perform integration with RK4
-	std::vector<Eigen::VectorXd> integrate(vector_function func);
+	// Perform the integration using the RK4 method.
+	// See https://www.sciencedirect.com/topics/mathematics/runge-kutta-method#:~:text=Runge%E2%80%93Kutta%20method%20is%20an,high%20order%20derivatives%20of%20functions.
+	void integrate(vector_function func);
+
+	// Write results to a file
+	bool print_results() const;
 };
 
 // template <typename T>
