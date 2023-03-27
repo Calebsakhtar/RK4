@@ -1,3 +1,5 @@
+#include <fstream>
+#include <string>
 #include "../headers/RK4.h"
 
 void RK4Solver::integrate(vector_function func) {
@@ -21,12 +23,31 @@ void RK4Solver::integrate(vector_function func) {
 	m_integrated = true;
 }
 
-// Print out the outcome
-bool RK4Solver::print_results() const {
 
+bool RK4Solver::print_times() const {
+	// Write the time vector to a file
+
+	// If the integration has not been performed, do not print anything.
+	if (m_integrated == false) { return false; }
+
+	return true;
+}
+
+bool RK4Solver::print_solutions() const {
+	// Write the solutions vector to a file
+
+	// If the integration has not been performed, do not print anything.
+	if (m_integrated == false) { return false; }
+
+	return true;
+}
+
+bool RK4Solver::print_results() const {
+	// Write results to a file
 
 	// If the integration has not been performed, do not print anything.
 	if (m_integrated == false) { return false; }
 	
+	return print_times() && print_solutions();
 
 }

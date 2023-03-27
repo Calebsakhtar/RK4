@@ -46,6 +46,12 @@ public:
 	// See https://www.sciencedirect.com/topics/mathematics/runge-kutta-method#:~:text=Runge%E2%80%93Kutta%20method%20is%20an,high%20order%20derivatives%20of%20functions.
 	void integrate(vector_function func);
 
+	// Write the time vector to a file
+	bool print_times() const;
+
+	// Write the solutions vector to a file
+	bool print_solutions() const;
+	
 	// Write results to a file
 	bool print_results() const;
 };
