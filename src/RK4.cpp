@@ -30,6 +30,20 @@ bool RK4Solver::print_times() const {
 	// If the integration has not been performed, do not print anything.
 	if (m_integrated == false) { return false; }
 
+	// Create the File Location String
+	std::string fileloc = "Outputs/RK4Times.csv";
+
+	// Create and open a text file to write into
+	std::ofstream Opfile(fileloc);
+
+	// Loop through the times vector and print its elements
+	for (size_t i = 0; i < m_timesize; i++) {
+		Opfile << std::to_string(i) << "," << std::to_string(m_ts[i]) << "\n";
+	}
+
+	// Close the output file
+	Opfile.close();
+
 	return true;
 }
 
@@ -38,6 +52,27 @@ bool RK4Solver::print_solutions() const {
 
 	// If the integration has not been performed, do not print anything.
 	if (m_integrated == false) { return false; }
+
+	// Create the File Location String
+	std::string fileloc = "Outputs/RK4Vectors.csv";
+
+	// Create and open a text file to write into
+	std::ofstream Opfile(fileloc);
+
+	// Loop through each solution vector and print its elements
+	for (size_t i = 0; i < m_timesize; i++) {
+		Opfile << std::to_string(i);
+		const Eigen::VectorXd current_vect = m_solutions[i];
+
+		for (size_t j = 0; j < m_vecsize; j++) {
+			Opfile << "," << std::to_string(current_vect[j]);
+		}
+
+		Opfile << "\n";
+	}
+
+	// Close the output file
+	Opfile.close();
 
 	return true;
 }
