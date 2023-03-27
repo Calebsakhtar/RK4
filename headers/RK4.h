@@ -4,7 +4,7 @@
 #include <vector>
 #include "../eigen/Eigen/Dense"
 
-typedef Eigen::VectorXd (*vector_function)(Eigen::VectorXd, double);
+typedef Eigen::VectorXd (*vector_function)(double, Eigen::VectorXd);
 
 class RK4Solver {
 	size_t m_vecsize = 0; // Size of the vectors
