@@ -23,26 +23,13 @@ void RK4Solver::integrate(vector_function func) {
 	m_integrated = true;
 }
 
-
 bool RK4Solver::print_times() const {
 	// Write the time vector to a file
 
 	// If the integration has not been performed, do not print anything.
 	if (m_integrated == false) { return false; }
 
-	// Create the File Location String
-	std::string fileloc = "../Outputs/RK4Times.csv";
-
-	// Create and open a text file to write into
-	std::ofstream Opfile(fileloc);
-
-	// Loop through the times vector and print its elements
-	for (size_t i = 0; i < m_timesize; i++) {
-		Opfile << std::to_string(i) << "," << std::to_string(m_ts[i]) << "\n";
-	}
-
-	// Close the output file
-	Opfile.close();
+	MathTools::print_scalar_list(m_ts, "RK4Times");
 
 	return true;
 }
@@ -53,26 +40,7 @@ bool RK4Solver::print_solutions() const {
 	// If the integration has not been performed, do not print anything.
 	if (m_integrated == false) { return false; }
 
-	// Create the File Location String
-	std::string fileloc = "../Outputs/RK4Vectors.csv";
-
-	// Create and open a text file to write into
-	std::ofstream Opfile(fileloc);
-
-	// Loop through each solution vector and print its elements
-	for (size_t i = 0; i < m_timesize; i++) {
-		Opfile << std::to_string(i);
-		const Eigen::VectorXd current_vect = m_solutions[i];
-
-		for (size_t j = 0; j < m_vecsize; j++) {
-			Opfile << "," << std::to_string(current_vect[j]);
-		}
-
-		Opfile << "\n";
-	}
-
-	// Close the output file
-	Opfile.close();
+	MathTools::print_vector_list(m_solutions, "RK4Vectors");
 
 	return true;
 }
@@ -84,5 +52,4 @@ bool RK4Solver::print_results() const {
 	if (m_integrated == false) { return false; }
 	
 	return print_times() && print_solutions();
-
 }
