@@ -2,9 +2,10 @@
 #define RK4_H
 
 #include <vector>
-#include "../eigen/Eigen/Dense"
+#include "../MathTools/headers/MathTools.h"
+#include "../MathTools/eigen/Eigen/Dense"
 
-typedef Eigen::VectorXd (*vector_function)(double, Eigen::VectorXd);
+typedef Eigen::VectorXd (*vector_function)(const double, const Eigen::VectorXd&);
 
 class RK4Solver {
 	size_t m_vecsize = 0; // Size of the vectors
@@ -55,11 +56,5 @@ public:
 	// Write results to a file
 	bool print_results() const;
 };
-
-// template <typename T>
-// template <typename T, size_t Size> using Vector = Eigen::Matrix<T, Size, 1>;
-
-// // Store the function to be solved as a pointer in a variable
-// Eigen::VectorXd(*m_func)(Eigen::VectorXd, double);
 
 #endif
